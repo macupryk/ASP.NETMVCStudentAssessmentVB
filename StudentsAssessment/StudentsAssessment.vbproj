@@ -150,20 +150,24 @@
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\FilterConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
-    <Compile Include="Controllers\AdminOpsController.vb" />
+    <Compile Include="Controllers\AdminsController.vb" />
     <Compile Include="Controllers\ErrorController.vb" />
     <Compile Include="Controllers\LoginController.vb" />
     <Compile Include="Controllers\TeachersController.vb" />
+    <Compile Include="Controllers\WelcomeAdminController.vb" />
     <Compile Include="Controllers\WelcomeController.vb" />
     <Compile Include="Models\BulkAccounts.vb" />
-    <Compile Include="Models\CreateClassData.vb" />
-    <Compile Include="Models\CreateAccounts1.vb" />
+    <Compile Include="Models\QuestionData.vb" />
+    <Compile Include="Models\StudentData.vb" />
+    <Compile Include="Models\SubjectsData.vb" />
+    <Compile Include="Models\ClassData.vb" />
     <Compile Include="Models\LoginData.vb" />
     <Compile Include="general.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CreateAccountData.vb" />
+    <Compile Include="Models\TeacherData.vb" />
     <Compile Include="Models\Utility.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -194,6 +198,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\0-logo.png" />
+    <Content Include="Content\rvModel\css\rvModal_mysettings.css" />
+    <Content Include="Content\rvModel\css\styles.css" />
+    <Content Include="Content\rvModel\js\rv-vanilla-modal.js" />
+    <Content Include="Content\rvModel\js\rvVanillaModal_mysettings.js" />
     <Content Include="Content\Superfish\css\megafish.css" />
     <Content Include="Content\Superfish\css\superfish-navbar.css" />
     <Content Include="Content\Superfish\css\superfish-vertical.css" />
@@ -231,8 +239,8 @@
     <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="Content\themes\base\jquery-ui.css" />
-    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\themes\base\menu.css" />
     <Content Include="Content\themes\base\progressbar.css" />
     <Content Include="Content\themes\base\resizable.css" />
@@ -248,10 +256,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\rvModel\css\sass\styles.scss" />
+    <Content Include="Content\rvModel\css\sass\_rv-vanilla-modal.scss" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\PublishProfiles\LocalPublish.pubxml" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
@@ -268,15 +279,39 @@
     <Content Include="Views\Login\Index.vbhtml" />
     <Content Include="Views\Login\Welcome.vbhtml" />
     <Content Include="Views\Home\BulkCreateAccounts.vbhtml" />
-    <Content Include="Views\AdminOps\Index.vbhtml" />
     <Content Include="Views\Shared\Error.vbhtml" />
     <Content Include="Views\Shared\NotFound.vbhtml" />
     <Content Include="Views\Home\ImportExcel.vbhtml" />
+    <Content Include="Views\WelcomeAdmin\Index.vbhtml" />
     <Content Include="Views\Welcome\Index.vbhtml" />
     <Content Include="Views\Teachers\AddClass.vbhtml" />
     <Content Include="Views\Shared\Sidemenu.vbhtml" />
     <Content Include="Views\Teachers\RemoveClass.vbhtml" />
     <Content Include="Views\Teachers\ViewClasses.vbhtml" />
+    <Content Include="Views\Teachers\AddSubjecttoClass.vbhtml" />
+    <Content Include="Views\Teachers\RemoveSubjectFromClass.vbhtml" />
+    <Content Include="Views\Teachers\ViewSubjects.vbhtml" />
+    <Content Include="Views\Teachers\AddStudenttoClass.vbhtml" />
+    <Content Include="Views\Teachers\ViewStudents.vbhtml" />
+    <Content Include="Views\Teachers\RemoveStudentFromClass.vbhtml" />
+    <Content Include="Views\Teachers\CreateQuestions.vbhtml" />
+    <Content Include="Views\rvModelPopup\Index.vbhtml" />
+    <Content Include="Views\Admins\AddClass.vbhtml" />
+    <Content Include="Views\Admins\RemoveClass.vbhtml" />
+    <Content Include="Views\Admins\ViewClasses.vbhtml" />
+    <Content Include="Views\DatePicker\Index.vbhtml" />
+    <Content Include="Views\jQDatePicker\Index.vbhtml" />
+    <Content Include="Views\jQDatePicker\Index_WO_Layout.vbhtml" />
+    <Content Include="Views\Admins\EditClass.vbhtml" />
+    <Content Include="Views\Admins\AssignToTeachers.vbhtml" />
+    <Content Include="Views\Admins\AddSubject.vbhtml" />
+    <Content Include="Views\Admins\RemoveSubject.vbhtml" />
+    <Content Include="Views\Admins\EditSubject.vbhtml" />
+    <Content Include="Views\Admins\ViewSubjects.vbhtml" />
+    <Content Include="Views\Admins\ViewStudents.vbhtml" />
+    <Content Include="Views\Admins\ViewTeachers.vbhtml" />
+    <Content Include="Views\Admins\RemoveStudent.vbhtml" />
+    <Content Include="Views\Admins\RemoveTeacher.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -310,6 +345,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\jQuery_datepicker\css\" />
+    <Folder Include="Content\jQuery_datepicker\img\" />
+    <Folder Include="Content\jQuery_datepicker\js\" />
     <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>

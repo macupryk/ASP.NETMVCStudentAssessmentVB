@@ -12,24 +12,10 @@ StudentsAssessment
  </summary>
  <returns></returns>
 </member>
-<member name="M:StudentsAssessment.general.GetTeacherSubjects(System.Int32)">
- <summary>
- Returns a list of subjects for this teacher with comma seperating them
- </summary>
- <param name="iTeacherID"></param>
- <returns></returns>
-</member>
 <member name="M:StudentsAssessment.general.GetTeacherName(System.Int32)">
  <summary>
  Given the teacher ID, this function returns the teacher's name.  This is the
  combination of teacher's first and last names
- </summary>
- <param name="iTeacherID"></param>
- <returns></returns>
-</member>
-<member name="M:StudentsAssessment.general.GetTeacherClasses(System.Int32)">
- <summary>
- Returns a list of classes for this teacher with comma seperating them
  </summary>
  <param name="iTeacherID"></param>
  <returns></returns>

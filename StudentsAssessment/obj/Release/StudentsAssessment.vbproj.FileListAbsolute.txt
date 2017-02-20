@@ -41,3 +41,4 @@ E:\Programming\Student_assessment_platform\StudentsAssessment - MVC\StudentsAsse
 E:\Programming\Student_assessment_platform\StudentsAssessment - MVC\StudentsAssessment\obj\Release\StudentsAssessment.dll
 E:\Programming\Student_assessment_platform\StudentsAssessment - MVC\StudentsAssessment\obj\Release\StudentsAssessment.xml
 E:\Programming\Student_assessment_platform\StudentsAssessment - MVC\StudentsAssessment\obj\Release\StudentsAssessment.pdb
+E:\Programming\Student_assessment_platform\StudentsAssessment - MVC\StudentsAssessment\obj\Release\StudentsAssessment.vbprojResolveAssemblyReference.cache

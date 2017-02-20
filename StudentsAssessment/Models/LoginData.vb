@@ -18,6 +18,9 @@ Public Class LoginData
 
     Public Property Status As String
 
+    Public Property CurrentClassID As Integer
+    Public Property CurrentSubjectID As Integer
+    Public Property SchoolID As Integer
 
     Public Function checkTeacherLogin(ByVal strUsername As String, strPassword As String) As Boolean
         Dim objFlag As Boolean = False
@@ -102,7 +105,7 @@ Public Class LoginData
             ' Read the connection string from the web.config file
             Using objConn As New SqlConnection(connString)
                 Dim strSQL = <![CDATA[
-                                SELECT TeacherID,Firstname, Lastname FROM Teachers WHERE Username=@Username AND Password=@Password
+                                SELECT TeacherID,Firstname, Lastname, CurrentClassID, CurrentSubjectID, SchoolID FROM Teachers WHERE Username=@Username AND Password=@Password
                     ]]>.Value()
                 Using objCommand1 As New SqlCommand
                     With objCommand1
@@ -117,6 +120,23 @@ Public Class LoginData
                             Firstname = objReader("Firstname").ToString
                             Lastname = objReader("Lastname").ToString
                             IDNo = Integer.Parse(objReader("TeacherID"))
+                            If IsDBNull(objReader("CurrentClassID")) Then
+                                CurrentClassID = 0
+                            Else
+                                CurrentClassID = Integer.Parse(objReader("CurrentClassID"))
+                            End If
+
+                            If IsDBNull(objReader("CurrentSubjectID")) Then
+                                CurrentSubjectID = 0
+                            Else
+                                CurrentSubjectID = Integer.Parse(objReader("CurrentSubjectID"))
+                            End If
+
+                            If IsDBNull(objReader("SchoolID")) Then
+                                SchoolID = 0
+                            Else
+                                SchoolID = Integer.Parse(objReader("SchoolID"))
+                            End If
                             Status = "TEACHER"
                         Else
                             Status = "ERROR"
@@ -148,6 +168,9 @@ Public Class LoginData
                             Firstname = objReader("Firstname").ToString
                             Lastname = objReader("Lastname").ToString
                             IDNo = Integer.Parse(objReader("StudentID"))
+                            CurrentClassID = 0
+                            CurrentSubjectID = 0
+                            SchoolID = 0
                             Status = "STUDENT"
                         Else
                             Status = "ERROR"
@@ -180,6 +203,9 @@ Public Class LoginData
                             Firstname = objReader("Firstname").ToString
                             Lastname = objReader("Lastname").ToString
                             IDNo = Integer.Parse(objReader("AdminID"))
+                            CurrentClassID = 0
+                            CurrentSubjectID = 0
+                            SchoolID = 0
                             Status = "ADMINISTRATOR"
                         Else
                             Status = "ERROR"
